@@ -9,5 +9,5 @@ def recv_message():
 
 thread.start_new_thread(recv_message,())
 while True:
-  msg = str(socket.gethostname())+':' + raw_input("{}".format('You>>:\n'))
+  msg = str(socket.gethostname())+':' + raw_input("{}".format('\n'))
   s.sendall(msg) 
