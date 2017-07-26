@@ -1,7 +1,7 @@
 import socket
 import thread
-s = socket.socket()
-s.connect(("192.168.1.31",50000))
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect(("192.168.1.31",40000))
 
 def recv_message():
   while True:

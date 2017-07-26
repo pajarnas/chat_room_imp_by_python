@@ -2,9 +2,9 @@
 
 import socket               # Import socket module
 import thread
-s = socket.socket()         # Create a socket object
-host = socket.gethostname() # Get local machine name
-port = 50000                # Reserve a port for your service.
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)         # Create a socket object
+host = socket.gethostname()  # Get local machine name
+port = 40000                 # Reserve a port for your service.
 
 
 def forward_send(c, l):
@@ -18,11 +18,12 @@ def forward_send(c, l):
 print 'Server started!'
 print 'Waiting for clients...'
 
-s.bind((host, port))        # Bind to the port
+s.bind(('192.168.1.31', port))        # Bind to the port
 s.listen(5)                 # Now wait for client connection.
 l = []
+print 'aaa'
 while True:
-    c, addr = s.accept()     # Establish connection with client.
+    c, addr = s.accept()     # Establish connection with client. 
     print 'get connected {}'.format(addr)
     l.append(c)
     thread.start_new_thread(forward_send, (c, l))
